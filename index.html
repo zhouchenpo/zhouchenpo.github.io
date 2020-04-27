@@ -531,6 +531,9 @@
 <h2 id="abstract"><a href="#abstract" class="headerlink" title="abstract"></a><code>abstract</code></h2><p><code>abstract</code>类不能实例化，只能被继承。类中的<code>abstract</code>方法不实现，需要继承后在子类内重写。如果子类没有重写所有的<code>abstract</code>方法，那么该子类依旧为<code>abstract</code>类。</p>
 <p><code>abstract</code>不能修饰<code>static</code> <code>final</code> <code>private</code>方法，因为他们不能被继承。</p>
 <p><code>abstract</code>也不能修饰<code>final</code>类，因为<code>final</code>类无法被继承。</p>
+<h2 id="volatile"><a href="#volatile" class="headerlink" title="volatile"></a><code>volatile</code></h2><p><code>volatile</code>修饰的变量是线程安全的。</p>
+<p>在CPU处理指令的过程中，为了增加效率，会将内存中的数据读取到L1,L2缓存内再进行运算，但不知道什么时候会写回去。当一个线程对一个变量进行修改后，在其写回前，其他线程仍可以读取原先的变量值。</p>
+<p>在<code>volatile</code>修饰后，JVM会向CPU发出<code>lock</code>指令，实现<strong>缓存一致性协议</strong>。一个线程将该变量修改数据会被回写到内存，CPU在发现自己的缓存中的数据被修改后，会将缓存中的数据失效，并从内存中重新读取该数据。</p>
 
           
         
