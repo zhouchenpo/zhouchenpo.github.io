@@ -94,15 +94,15 @@
 
 
 
-<meta name="description" content="位操作无非三种，按位与&amp;，按位或|,按位异或^。另外还可以加上&gt;&gt;与&lt;&lt;。 但是利用位操作可以简化很多操作。直接看题。 数组中出现一次的两个数字给定一个数组，数组中有两个数字只出现了一次，其他数字都出现了两次，找出出现一次的两个数字。 看到题目想都不用想HashMap了。但是提交一看太慢了。 可以使用^操作。 将所有数字全部^运算后的结果就是出现一次的两个数的^。为">
+<meta name="description" content="位操作无非四种，取反~，按位与&amp;，按位或|，按位异或^。另外还可以加上&gt;&gt;与&lt;&lt;。 但是利用位操作可以简化很多操作。直接看题。 统计二进制中1的个数假设一个二进制数n&#x3D;……10……0，那么n-1&#x3D;……01……1，则有n&amp;(n-1)&#x3D;……00……0即可以消去最低位的1。 1234while(n!&#x3D;0)&amp;#123;    n&amp;&#x3D;n-1;    ct++;">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Java中的位操作">
 <meta property="og:url" content="http://yoursite.com/2020/04/28/Java%E4%B8%AD%E7%9A%84%E4%BD%8D%E6%93%8D%E4%BD%9C/index.html">
 <meta property="og:site_name" content="21">
-<meta property="og:description" content="位操作无非三种，按位与&amp;，按位或|,按位异或^。另外还可以加上&gt;&gt;与&lt;&lt;。 但是利用位操作可以简化很多操作。直接看题。 数组中出现一次的两个数字给定一个数组，数组中有两个数字只出现了一次，其他数字都出现了两次，找出出现一次的两个数字。 看到题目想都不用想HashMap了。但是提交一看太慢了。 可以使用^操作。 将所有数字全部^运算后的结果就是出现一次的两个数的^。为">
+<meta property="og:description" content="位操作无非四种，取反~，按位与&amp;，按位或|，按位异或^。另外还可以加上&gt;&gt;与&lt;&lt;。 但是利用位操作可以简化很多操作。直接看题。 统计二进制中1的个数假设一个二进制数n&#x3D;……10……0，那么n-1&#x3D;……01……1，则有n&amp;(n-1)&#x3D;……00……0即可以消去最低位的1。 1234while(n!&#x3D;0)&amp;#123;    n&amp;&#x3D;n-1;    ct++;">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2020-04-28T15:27:34.000Z">
-<meta property="article:modified_time" content="2020-04-29T05:44:42.898Z">
+<meta property="article:modified_time" content="2020-05-06T15:10:27.643Z">
 <meta property="article:author" content="Zhou Chenpo">
 <meta property="article:tag" content="Java">
 <meta property="article:tag" content="Leetcode">
@@ -363,8 +363,13 @@
       
 
       
-        <p>位操作无非三种，按位与<code>&amp;</code>，按位或<code>|</code>,按位异或<code>^</code>。另外还可以加上<code>&gt;&gt;</code>与<code>&lt;&lt;</code>。</p>
+        <p>位操作无非四种，取反<code>~</code>，按位与<code>&amp;</code>，按位或<code>|</code>，按位异或<code>^</code>。另外还可以加上<code>&gt;&gt;</code>与<code>&lt;&lt;</code>。</p>
 <p>但是利用位操作可以简化很多操作。直接看题。</p>
+<h2 id="统计二进制中1的个数"><a href="#统计二进制中1的个数" class="headerlink" title="统计二进制中1的个数"></a>统计二进制中1的个数</h2><p>假设一个二进制数<code>n=……10……0</code>，那么<code>n-1=……01……1</code>，则有<code>n&amp;(n-1)=……00……0</code>即可以消去最低位的<code>1</code>。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">while</span>(n!=<span class="number">0</span>)&#123;</span><br><span class="line">    n&amp;=n-<span class="number">1</span>;</span><br><span class="line">    ct++;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="判断是否为2的幂"><a href="#判断是否为2的幂" class="headerlink" title="判断是否为2的幂"></a>判断是否为2的幂</h2><p>暴力法一直除以2。或者，2的倍数都是<code>1&lt;&lt;</code>得到的，可以<code>&gt;&gt;</code>。</p>
+<p>当然最简单的就是利用上面的统计1方法。因为2的幂的二进制一定为<code>10……0</code>的形式。</p>
 <h2 id="数组中出现一次的两个数字"><a href="#数组中出现一次的两个数字" class="headerlink" title="数组中出现一次的两个数字"></a>数组中出现一次的两个数字</h2><p>给定一个数组，数组中有两个数字只出现了一次，其他数字都出现了两次，找出出现一次的两个数字。</p>
 <p>看到题目想都不用想<code>HashMap</code>了。但是提交一看太慢了。</p>
 <p>可以使用<code>^</code>操作。</p>
@@ -373,11 +378,15 @@
 <p>假设<code>^</code>操作后的结果是<code>001111000</code>。<code>1</code>代表该位两数不同，<code>0</code>代表该位相同。不同位肯定死一个<code>0</code>一个<code>1</code>，那么与<code>1</code>进行<code>&amp;</code>操作的结果就不一样了。在这个例子里，最简单的就是取最后一个<code>1</code>位。所以可以按照<code>&amp;1000==0</code>进行分组。至于其他数字，由于肯定成对，相同数字肯定结果相同分在相同组内。</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">int</span>[] singleNumbers(<span class="keyword">int</span>[] nums) &#123;</span><br><span class="line">        <span class="keyword">if</span>(nums == <span class="keyword">null</span> || nums.length == <span class="number">0</span>) &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">new</span> <span class="keyword">int</span>[<span class="number">0</span>];</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">int</span> eor = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> num : nums) &#123;</span><br><span class="line">            eor ^= num; </span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">int</span> rightOne = <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">while</span>((eor &amp; rightOne) == <span class="number">0</span>) &#123;</span><br><span class="line">            rightOne = rightOne &lt;&lt; <span class="number">1</span>;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">int</span> eorHasOne = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> num : nums) &#123;</span><br><span class="line">            <span class="keyword">if</span>((num &amp; rightOne) != <span class="number">0</span>) &#123;</span><br><span class="line">                eorHasOne ^= num;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">int</span>[] res = <span class="keyword">new</span> <span class="keyword">int</span>[]&#123;eorHasOne, eor ^ eorHasOne&#125;;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> res;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<h2 id="统计二进制中1的个数"><a href="#统计二进制中1的个数" class="headerlink" title="统计二进制中1的个数"></a>统计二进制中1的个数</h2><p>假设一个二进制数<code>n=……10……0</code>，那么<code>n-1=……01……1</code>，则有<code>n&amp;(n-1)=……00……0</code>即可以消去最低位的<code>1</code>。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">while</span>(n!=<span class="number">0</span>)&#123;</span><br><span class="line">    n&amp;=n-<span class="number">1</span>;</span><br><span class="line">    ct++;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="数组中出现一次的一个数字"><a href="#数组中出现一次的一个数字" class="headerlink" title="数组中出现一次的一个数字"></a>数组中出现一次的一个数字</h2><p>给定一个数组，其中只有一个数字出现一次，别的数字都出现了三次。找出只出现一次的数字。</p>
+<p>真的是百思不得其解。先看看答案的操作。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> seenOnce = <span class="number">0</span>;</span><br><span class="line"><span class="keyword">int</span> seenTwice = <span class="number">0</span>;</span><br><span class="line"><span class="keyword">for</span>(num : nums)&#123;</span><br><span class="line">    seenOnce = ~seenTwice &amp; (seenOnce ^ num);</span><br><span class="line">    seenTwice = ~seenOnce &amp; (seenTwice ^ num);</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">return</span> seenOnce;</span><br></pre></td></tr></table></figure>
 
-<h2 id="判断是否为2的幂"><a href="#判断是否为2的幂" class="headerlink" title="判断是否为2的幂"></a>判断是否为2的幂</h2><p>暴力法一直除以2。或者，2的倍数都是<code>1&lt;&lt;</code>得到的，可以<code>&gt;&gt;</code>。</p>
-<p>当然最简单的就是利用上面的统计1方法。因为2的幂的二进制一定为<code>10……0</code>的形式。</p>
+<p><code>^</code>操作可以去掉重复两次，出现一次与三次则需要维护另一个数据<code>seenTwice</code>进行区分。</p>
+<p>位操作都是符合交换律的，所以不妨分析一个数连续出现三次的情况。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">number : <span class="number">0100</span></span><br><span class="line"><span class="number">1</span> : seeOnce <span class="number">0100</span></span><br><span class="line">    seeTwice <span class="number">0000</span></span><br><span class="line"></span><br><span class="line"><span class="number">2</span> : seeOnce <span class="number">0000</span></span><br><span class="line">    seeTwice <span class="number">0100</span></span><br><span class="line"></span><br><span class="line"><span class="number">3</span> : seeOnce <span class="number">0000</span></span><br><span class="line">    seeTwice <span class="number">0000</span></span><br></pre></td></tr></table></figure>
+
+<p>初始时，两个变量均为<code>0</code>。出现一次时，<code>seeTwice</code>显然还是<code>0</code>，因此出现一次的结果即为<code>0^num</code>，即为<code>num</code>本身。出现两次时，<code>seeOnce</code>后半部分<code>seeOnce^num</code>抵消为<code>0</code>，此时显然<code>seeOnce</code>也为<code>0</code>。但是<code>seeTwice</code>变为了<code>num</code>本身。出现三次时全部相消为<code>0</code>。那么显然再循环一次即出现4次，5次又可以通过该方法计数，因此题目需要规定出现三次与一次。</p>
 
       
     </div>
@@ -419,10 +428,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2020/04/30/%E5%A4%A9%E5%8F%B0%E9%BA%BB%E5%B0%86/" rel="prev" title="天台麻将">
-                天台麻将 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -499,7 +504,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">5</span>
+                <span class="site-state-item-count">4</span>
                 <span class="site-state-item-name">posts</span>
               </a>
             </div>
@@ -580,7 +585,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#数组中出现一次的两个数字"><span class="nav-number">1.</span> <span class="nav-text">数组中出现一次的两个数字</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#统计二进制中1的个数"><span class="nav-number">2.</span> <span class="nav-text">统计二进制中1的个数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#判断是否为2的幂"><span class="nav-number">3.</span> <span class="nav-text">判断是否为2的幂</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#统计二进制中1的个数"><span class="nav-number">1.</span> <span class="nav-text">统计二进制中1的个数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#判断是否为2的幂"><span class="nav-number">2.</span> <span class="nav-text">判断是否为2的幂</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#数组中出现一次的两个数字"><span class="nav-number">3.</span> <span class="nav-text">数组中出现一次的两个数字</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#数组中出现一次的一个数字"><span class="nav-number">4.</span> <span class="nav-text">数组中出现一次的一个数字</span></a></li></ol></div>
             
 
           </div>
