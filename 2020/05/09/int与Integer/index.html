@@ -78,7 +78,7 @@
 <link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Java,关键字," />
+  <meta name="keywords" content="Java," />
 
 
 
@@ -94,18 +94,17 @@
 
 
 
-<meta name="description" content="static简单来说，static可以实现“无实例”访问Class里的字段与方法。例如Math.max()。 修饰字段与方法时，被修饰的字段与方法将被储存在Class内，所有实例的调用都指向同一字段或数据。因此如果对一静态字段进行修改，相同类下的不同实例的字段也发生变化。所以，更推荐用Class.method()或者Class.field直接访问静态字段与方法。 interface也可以定义静态字">
+<meta name="description" content="背景在做leetcode时发现 12345678Stack&lt;Integer&gt; stack1 &#x3D; new Stack&lt;&gt;();Stack&lt;Integer&gt; stack1 &#x3D; new Stack&lt;&gt;();...if(stack1.peek() &#x3D;&#x3D; stack2.peek())&amp;#123;    &#x2F;&#x2F; do something&amp;#125;  并不能顺利进">
 <meta property="og:type" content="article">
-<meta property="og:title" content="java中的关键字">
-<meta property="og:url" content="http://yoursite.com/2020/04/21/java%E4%B8%AD%E7%9A%84%E5%85%B3%E9%94%AE%E5%AD%97/index.html">
+<meta property="og:title" content="int与Integer">
+<meta property="og:url" content="http://yoursite.com/2020/05/09/int%E4%B8%8EInteger/index.html">
 <meta property="og:site_name" content="21">
-<meta property="og:description" content="static简单来说，static可以实现“无实例”访问Class里的字段与方法。例如Math.max()。 修饰字段与方法时，被修饰的字段与方法将被储存在Class内，所有实例的调用都指向同一字段或数据。因此如果对一静态字段进行修改，相同类下的不同实例的字段也发生变化。所以，更推荐用Class.method()或者Class.field直接访问静态字段与方法。 interface也可以定义静态字">
+<meta property="og:description" content="背景在做leetcode时发现 12345678Stack&lt;Integer&gt; stack1 &#x3D; new Stack&lt;&gt;();Stack&lt;Integer&gt; stack1 &#x3D; new Stack&lt;&gt;();...if(stack1.peek() &#x3D;&#x3D; stack2.peek())&amp;#123;    &#x2F;&#x2F; do something&amp;#125;  并不能顺利进">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2020-04-21T14:06:30.000Z">
-<meta property="article:modified_time" content="2020-04-27T04:21:55.559Z">
+<meta property="article:published_time" content="2020-05-09T13:25:36.000Z">
+<meta property="article:modified_time" content="2020-05-09T14:25:59.283Z">
 <meta property="article:author" content="Zhou Chenpo">
 <meta property="article:tag" content="Java">
-<meta property="article:tag" content="关键字">
 <meta name="twitter:card" content="summary">
 
 
@@ -135,13 +134,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2020/04/21/java中的关键字/"/>
+  <link rel="canonical" href="http://yoursite.com/2020/05/09/int与Integer/"/>
 
 
 
 
 
-  <title>java中的关键字 | 21</title>
+  <title>int与Integer | 21</title>
   
 
 
@@ -274,7 +273,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/04/21/java%E4%B8%AD%E7%9A%84%E5%85%B3%E9%94%AE%E5%AD%97/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/05/09/int%E4%B8%8EInteger/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Zhou Chenpo">
@@ -291,7 +290,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">java中的关键字</h1>
+          <h1 class="post-title" itemprop="name headline">int与Integer</h1>
         
 
         <div class="post-meta">
@@ -303,8 +302,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-04-21T22:06:30+08:00">
-                2020-04-21
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-05-09T21:25:36+08:00">
+                2020-05-09
               </time>
             
 
@@ -363,19 +362,37 @@
       
 
       
-        <h2 id="static"><a href="#static" class="headerlink" title="static"></a><code>static</code></h2><p>简单来说，<code>static</code>可以实现“无实例”访问<code>Class</code>里的字段与方法。例如<code>Math.max()</code>。</p>
-<p>修饰字段与方法时，被修饰的字段与方法将被储存在<code>Class</code>内，所有实例的调用都指向同一字段或数据。因此如果对一静态字段进行修改，相同类下的不同实例的字段也发生变化。所以，更推荐用<code>Class.method()</code>或者<code>Class.field</code>直接访问静态字段与方法。</p>
-<p><code>interface</code>也可以定义静态字段，且只能定义静态字段。所有字段必须为<code>static final</code>。（Why?）如果没有定义为<code>static final</code>，编译器会自动加上。</p>
-<p>注意到<code>main</code>函数也为<code>static</code>(Why?)。</p>
-<h2 id="final"><a href="#final" class="headerlink" title="final"></a><code>final</code></h2><h3 id="修饰Class"><a href="#修饰Class" class="headerlink" title="修饰Class"></a>修饰<code>Class</code></h3><p>被修饰的类将无法被继承。类中的字段是否为<code>final</code>均可，但是所有的方法都将被自动定义为<code>final</code>。</p>
-<h3 id="修饰方法"><a href="#修饰方法" class="headerlink" title="修饰方法"></a>修饰方法</h3><p>被修饰的方法不能够被重写。用<code>final</code>可以防止子类对方法进行修改。所有的<code>private</code>方法会被隐式指定为<code>final</code>。</p>
-<h3 id="修饰字段"><a href="#修饰字段" class="headerlink" title="修饰字段"></a>修饰字段</h3><p>对于基本数据类型，被修饰的字段将不能被重新赋值。而对于引用类型的变量，该变量不能再指向其他对象。</p>
-<h2 id="abstract"><a href="#abstract" class="headerlink" title="abstract"></a><code>abstract</code></h2><p><code>abstract</code>类不能实例化，只能被继承。类中的<code>abstract</code>方法不实现，需要继承后在子类内重写。如果子类没有重写所有的<code>abstract</code>方法，那么该子类依旧为<code>abstract</code>类。</p>
-<p><code>abstract</code>不能修饰<code>static</code> <code>final</code> <code>private</code>方法，因为他们不能被继承。</p>
-<p><code>abstract</code>也不能修饰<code>final</code>类，因为<code>final</code>类无法被继承。</p>
-<h2 id="volatile"><a href="#volatile" class="headerlink" title="volatile"></a><code>volatile</code></h2><p><code>volatile</code>修饰的变量是线程安全的。</p>
-<p>在CPU处理指令的过程中，为了增加效率，会将内存中的数据读取到L1,L2缓存内再进行运算，但不知道什么时候会写回去。当一个线程对一个变量进行修改后，在其写回前，其他线程仍可以读取原先的变量值。</p>
-<p>在<code>volatile</code>修饰后，JVM会向CPU发出<code>lock</code>指令，实现<strong>缓存一致性协议</strong>。一个线程将该变量修改数据会被回写到内存，CPU在发现自己的缓存中的数据被修改后，会将缓存中的数据失效，并从内存中重新读取该数据。</p>
+        <h2 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h2><p>在做leetcode时发现</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">Stack&lt;Integer&gt; stack1 = <span class="keyword">new</span> Stack&lt;&gt;();</span><br><span class="line">Stack&lt;Integer&gt; stack1 = <span class="keyword">new</span> Stack&lt;&gt;();</span><br><span class="line"></span><br><span class="line">...</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span>(stack1.peek() == stack2.peek())&#123;</span><br><span class="line">    <span class="comment">// do something</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>并不能顺利进入<code>if</code>，然后仔细一想，<code>Stack&lt;Integer&gt;</code>里应该是<code>Integer</code>,换用<code>equals()</code>后结果正常。</p>
+<p>由于在<code>push()</code>操作时都是直接<code>push(int)</code>，因此之前并没有对两者的差别有过多思考。事实上在之前没有出问题大多是JDK自动给我装箱开箱了。</p>
+<h2 id="装箱与开箱"><a href="#装箱与开箱" class="headerlink" title="装箱与开箱"></a>装箱与开箱</h2><p>从<code>int</code>到<code>Integer</code>可以手动装箱,也可以自动装箱。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Integer number = <span class="keyword">new</span> Integer(value);</span><br><span class="line">Integer number = value;</span><br></pre></td></tr></table></figure>
+
+<p>事实上，在IDEA中，前者还会被警告<code>Unnecessary boxing</code>，并且会被评论为<code>deprecated</code>。手动装箱并没有必要。IDEA：你这种傻逼也配开发java？</p>
+<p>在与<code>int</code>类型进行比较与运算时，<code>Integer</code>会被自动开箱。当然也可以用<code>Integer.intValue()</code>手动开箱。不过IDEA依然不喜欢这种做法，认为其时Unnecessary的。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">Integer num1 = <span class="number">1234</span>;</span><br><span class="line"><span class="keyword">int</span> num2 = <span class="number">1234</span>;</span><br><span class="line"><span class="keyword">int</span> num3 = num1; <span class="comment">//自动开箱</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> sum1 = num1+num2; <span class="comment">//自动开箱</span></span><br><span class="line"><span class="keyword">int</span> sum2 = num1.intValue()+num3; <span class="comment">//手动开箱，但是没必要</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span>(num1 == num2)&#123; <span class="comment">//自动开箱</span></span><br><span class="line">    <span class="comment">// do something</span></span><br><span class="line">    num1--;        <span class="comment">//-&gt;1233</span></span><br><span class="line">    <span class="comment">//自动开箱再装箱？</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>在做基本操作时手动开箱都是没有比较的，那么再复杂一点的操作呢？</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">PriorityQueue&lt;Integer&gt; queue = <span class="keyword">new</span> PriorityQueue&lt;&gt;(<span class="keyword">new</span> Comparator&lt;Integer&gt;() &#123;</span><br><span class="line">        <span class="meta">@Override</span></span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">compare</span><span class="params">(Integer o1, Integer o2)</span> </span>&#123;</span><br><span class="line">            <span class="keyword">return</span> o1-o2;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;);</span><br></pre></td></tr></table></figure>
+
+<p>原本以为IDEA会很高兴地让我自己开箱，但是没有。减法好像也不是很复杂。</p>
+<h2 id="new吗"><a href="#new吗" class="headerlink" title="new吗"></a><code>new</code>吗</h2><p>如果<code>new</code>两个对象，那么他们一定是不同对象。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Integer num1 = <span class="keyword">new</span> Integer(<span class="number">123</span>);</span><br><span class="line">Integer num2 = <span class="keyword">new</span> Integer(<span class="number">123</span>);</span><br><span class="line"></span><br><span class="line">num1 == num2 -&gt;<span class="keyword">false</span></span><br><span class="line">num1.equals(num2) -&gt;<span class="keyword">true</span></span><br></pre></td></tr></table></figure>
+
+<p>但是IDEA会警告让我们不要手动装箱。那么如果都不手动装箱呢？</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Integer num1 = <span class="number">123</span>;</span><br><span class="line">Integer num2 = <span class="number">123</span>;</span><br><span class="line"></span><br><span class="line">num1 == num2 -&gt;<span class="keyword">true</span></span><br><span class="line">num1.equals(num2) -&gt;<span class="keyword">true</span></span><br></pre></td></tr></table></figure>
+
+<p>网上大家都说在[-128,127]范围内的<code>Integer</code>会进行缓存，下次再声明会直接引用。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Integer num1 = <span class="number">123</span>;</span><br><span class="line">Integer num2 = <span class="number">123</span>;</span><br><span class="line">num1--;</span><br><span class="line">num1 == num2 -&gt;<span class="keyword">false</span></span><br><span class="line">num1.equals(num2) -&gt;<span class="keyword">false</span></span><br></pre></td></tr></table></figure>
+
+<p>当对其中一个进行修改后，两者又为不同的引用了。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Integer num1 = <span class="number">128</span>;</span><br><span class="line">Integer num2 = <span class="number">128</span>;</span><br><span class="line">num1 == num2 -&gt;<span class="keyword">false</span></span><br><span class="line">num1.equals(num2) -&gt;<span class="keyword">false</span></span><br></pre></td></tr></table></figure>
+
+<p>当数值不处于[-128,127]时，两者同样不会为相同引用。</p>
+<h2 id="还有其他的"><a href="#还有其他的" class="headerlink" title="还有其他的"></a>还有其他的</h2><p>虽然大家都说<code>int</code>的初始值是<code>0</code>,<code>Integer</code>的初始值是<code>null</code>。虽然拍拍脑袋确实是这样，但是不初始化变量并不能给我build。</p>
+<p><code>Intger</code>是<code>int</code>的包装类，别的基本数据类型同样有包装类。</p>
 
       
     </div>
@@ -395,8 +412,6 @@
           
             <a href="/tags/Java/" rel="tag"># Java</a>
           
-            <a href="/tags/%E5%85%B3%E9%94%AE%E5%AD%97/" rel="tag"># 关键字</a>
-          
         </div>
       
 
@@ -408,8 +423,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2020/04/20/%E5%88%97%E4%B8%BE%E4%B8%91%E6%95%B0/" rel="next" title="三指针法列举丑数">
-                <i class="fa fa-chevron-left"></i> 三指针法列举丑数
+              <a href="/2020/04/28/Java%E4%B8%AD%E7%9A%84%E4%BD%8D%E6%93%8D%E4%BD%9C/" rel="next" title="Java中的位操作">
+                <i class="fa fa-chevron-left"></i> Java中的位操作
               </a>
             
           </div>
@@ -417,10 +432,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2020/04/26/lambda%E4%B8%8EComparator/" rel="prev" title="lambda与Comparator">
-                lambda与Comparator <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -578,7 +589,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#static"><span class="nav-number">1.</span> <span class="nav-text">static</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#final"><span class="nav-number">2.</span> <span class="nav-text">final</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#修饰Class"><span class="nav-number">2.1.</span> <span class="nav-text">修饰Class</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#修饰方法"><span class="nav-number">2.2.</span> <span class="nav-text">修饰方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#修饰字段"><span class="nav-number">2.3.</span> <span class="nav-text">修饰字段</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#abstract"><span class="nav-number">3.</span> <span class="nav-text">abstract</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#volatile"><span class="nav-number">4.</span> <span class="nav-text">volatile</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#背景"><span class="nav-number">1.</span> <span class="nav-text">背景</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#装箱与开箱"><span class="nav-number">2.</span> <span class="nav-text">装箱与开箱</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#new吗"><span class="nav-number">3.</span> <span class="nav-text">new吗</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#还有其他的"><span class="nav-number">4.</span> <span class="nav-text">还有其他的</span></a></li></ol></div>
             
 
           </div>

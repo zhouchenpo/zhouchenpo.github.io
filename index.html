@@ -270,6 +270,178 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/05/09/int%E4%B8%8EInteger/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Zhou Chenpo">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="21">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2020/05/09/int%E4%B8%8EInteger/" itemprop="url">int与Integer</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-05-09T21:25:36+08:00">
+                2020-05-09
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Java-Language/" itemprop="url" rel="index">
+                    <span itemprop="name">Java Language</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h2><p>在做leetcode时发现</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">Stack&lt;Integer&gt; stack1 = <span class="keyword">new</span> Stack&lt;&gt;();</span><br><span class="line">Stack&lt;Integer&gt; stack1 = <span class="keyword">new</span> Stack&lt;&gt;();</span><br><span class="line"></span><br><span class="line">...</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span>(stack1.peek() == stack2.peek())&#123;</span><br><span class="line">    <span class="comment">// do something</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>并不能顺利进入<code>if</code>，然后仔细一想，<code>Stack&lt;Integer&gt;</code>里应该是<code>Integer</code>,换用<code>equals()</code>后结果正常。</p>
+<p>由于在<code>push()</code>操作时都是直接<code>push(int)</code>，因此之前并没有对两者的差别有过多思考。事实上在之前没有出问题大多是JDK自动给我装箱开箱了。</p>
+<h2 id="装箱与开箱"><a href="#装箱与开箱" class="headerlink" title="装箱与开箱"></a>装箱与开箱</h2><p>从<code>int</code>到<code>Integer</code>可以手动装箱,也可以自动装箱。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Integer number = <span class="keyword">new</span> Integer(value);</span><br><span class="line">Integer number = value;</span><br></pre></td></tr></table></figure>
+
+<p>事实上，在IDEA中，前者还会被警告<code>Unnecessary boxing</code>，并且会被评论为<code>deprecated</code>。手动装箱并没有必要。IDEA：你这种傻逼也配开发java？</p>
+<p>在与<code>int</code>类型进行比较与运算时，<code>Integer</code>会被自动开箱。当然也可以用<code>Integer.intValue()</code>手动开箱。不过IDEA依然不喜欢这种做法，认为其时Unnecessary的。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">Integer num1 = <span class="number">1234</span>;</span><br><span class="line"><span class="keyword">int</span> num2 = <span class="number">1234</span>;</span><br><span class="line"><span class="keyword">int</span> num3 = num1; <span class="comment">//自动开箱</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> sum1 = num1+num2; <span class="comment">//自动开箱</span></span><br><span class="line"><span class="keyword">int</span> sum2 = num1.intValue()+num3; <span class="comment">//手动开箱，但是没必要</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span>(num1 == num2)&#123; <span class="comment">//自动开箱</span></span><br><span class="line">    <span class="comment">// do something</span></span><br><span class="line">    num1--;        <span class="comment">//-&gt;1233</span></span><br><span class="line">    <span class="comment">//自动开箱再装箱？</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>在做基本操作时手动开箱都是没有比较的，那么再复杂一点的操作呢？</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">PriorityQueue&lt;Integer&gt; queue = <span class="keyword">new</span> PriorityQueue&lt;&gt;(<span class="keyword">new</span> Comparator&lt;Integer&gt;() &#123;</span><br><span class="line">        <span class="meta">@Override</span></span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">compare</span><span class="params">(Integer o1, Integer o2)</span> </span>&#123;</span><br><span class="line">            <span class="keyword">return</span> o1-o2;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;);</span><br></pre></td></tr></table></figure>
+
+<p>原本以为IDEA会很高兴地让我自己开箱，但是没有。减法好像也不是很复杂。</p>
+<h2 id="new吗"><a href="#new吗" class="headerlink" title="new吗"></a><code>new</code>吗</h2><p>如果<code>new</code>两个对象，那么他们一定是不同对象。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Integer num1 = <span class="keyword">new</span> Integer(<span class="number">123</span>);</span><br><span class="line">Integer num2 = <span class="keyword">new</span> Integer(<span class="number">123</span>);</span><br><span class="line"></span><br><span class="line">num1 == num2 -&gt;<span class="keyword">false</span></span><br><span class="line">num1.equals(num2) -&gt;<span class="keyword">true</span></span><br></pre></td></tr></table></figure>
+
+<p>但是IDEA会警告让我们不要手动装箱。那么如果都不手动装箱呢？</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Integer num1 = <span class="number">123</span>;</span><br><span class="line">Integer num2 = <span class="number">123</span>;</span><br><span class="line"></span><br><span class="line">num1 == num2 -&gt;<span class="keyword">true</span></span><br><span class="line">num1.equals(num2) -&gt;<span class="keyword">true</span></span><br></pre></td></tr></table></figure>
+
+<p>网上大家都说在[-128,127]范围内的<code>Integer</code>会进行缓存，下次再声明会直接引用。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Integer num1 = <span class="number">123</span>;</span><br><span class="line">Integer num2 = <span class="number">123</span>;</span><br><span class="line">num1--;</span><br><span class="line">num1 == num2 -&gt;<span class="keyword">false</span></span><br><span class="line">num1.equals(num2) -&gt;<span class="keyword">false</span></span><br></pre></td></tr></table></figure>
+
+<p>当对其中一个进行修改后，两者又为不同的引用了。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Integer num1 = <span class="number">128</span>;</span><br><span class="line">Integer num2 = <span class="number">128</span>;</span><br><span class="line">num1 == num2 -&gt;<span class="keyword">false</span></span><br><span class="line">num1.equals(num2) -&gt;<span class="keyword">false</span></span><br></pre></td></tr></table></figure>
+
+<p>当数值不处于[-128,127]时，两者同样不会为相同引用。</p>
+<h2 id="还有其他的"><a href="#还有其他的" class="headerlink" title="还有其他的"></a>还有其他的</h2><p>虽然大家都说<code>int</code>的初始值是<code>0</code>,<code>Integer</code>的初始值是<code>null</code>。虽然拍拍脑袋确实是这样，但是不初始化变量并不能给我build。</p>
+<p><code>Intger</code>是<code>int</code>的包装类，别的基本数据类型同样有包装类。</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/04/28/Java%E4%B8%AD%E7%9A%84%E4%BD%8D%E6%93%8D%E4%BD%9C/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -940,7 +1112,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">4</span>
+                <span class="site-state-item-count">5</span>
                 <span class="site-state-item-name">posts</span>
               </a>
             </div>
